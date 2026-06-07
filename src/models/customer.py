@@ -91,10 +91,20 @@ class Customer(Base):
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
+    # AA-linked financial data
+    aa_verified_income    = Column(Float)
+    aa_verified_at        = Column(DateTime)
+    aa_pre_approved_limit = Column(Float)
+
     # Relationships
     leads = relationship("Lead", back_populates="customer")
     kyc_documents = relationship("KYCDocument", back_populates="customer")
     onboarding_sessions = relationship("OnboardingSession", back_populates="customer")
+    consents = relationship("ConsentRecord", back_populates="customer")
+    dsr_requests = relationship("DataSubjectRequest", back_populates="customer")
+    aa_consents = relationship("AAConsentArtefact", back_populates="customer")
+    financial_summary = relationship("FinancialSummary", back_populates="customer",
+                                     uselist=False)
 
     @property
     def full_name(self):
