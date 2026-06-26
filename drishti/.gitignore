@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+.env
+*.db
+*.joblib
+node_modules/
+frontend/dist/
+.DS_Store
